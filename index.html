@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The View — Maamriyeh, Lebanon</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,500;9..144,600&family=Work+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --night: #161f2c;
+    --night-deep: #0e141c;
+    --stone: #d8c9a3;
+    --terracotta: #c1663d;
+    --terracotta-light: #e08a5c;
+    --sea: #2f8f92;
+    --sea-light: #7fc2c0;
+    --cream: #f4ece0;
+    --line: rgba(244,236,224,0.14);
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background: var(--night);
+    color: var(--cream);
+    font-family: 'Work Sans', sans-serif;
+    font-weight: 400;
+    line-height: 1.5;
+    overflow-x:hidden;
+  }
+  h1,h2,h3,.display{
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+  }
+  .mono{
+    font-family: 'JetBrains Mono', monospace;
+    letter-spacing: 0.02em;
+  }
+  a{color:inherit; text-decoration:none;}
+  .eyebrow{
+    font-family:'JetBrains Mono', monospace;
+    font-size:0.72rem;
+    letter-spacing:0.18em;
+    text-transform:uppercase;
+    color: var(--terracotta-light);
+  }
+
+  /* NAV */
+  nav{
+    position:sticky; top:0; z-index:50;
+    display:flex; align-items:center; justify-content:space-between;
+    padding:1.3rem 6vw;
+    background: linear-gradient(to bottom, rgba(14,20,28,0.92), rgba(14,20,28,0.0));
+    backdrop-filter: blur(6px);
+  }
+  .logo{
+    font-family:'Fraunces', serif;
+    font-size:1.25rem;
+    font-weight:600;
+  }
+  .logo span{color:var(--terracotta-light);}
+  .nav-links{display:flex; gap:2.2rem; font-size:0.9rem;}
+  .nav-links a{opacity:0.85; transition:opacity .2s;}
+  .nav-links a:hover{opacity:1;}
+  .nav-cta{
+    border:1px solid var(--line);
+    padding:0.5rem 1.1rem;
+    border-radius:2px;
+    font-size:0.85rem;
+  }
+  .nav-cta:hover{border-color:var(--terracotta-light); color:var(--terracotta-light);}
+
+  /* HERO */
+  .hero{
+    position:relative;
+    min-height:92vh;
+    display:flex; flex-direction:column; justify-content:center;
+    padding:0 6vw;
+    overflow:hidden;
+  }
+  .hero-bg{
+    position:absolute; inset:0; z-index:0;
+    background:
+      radial-gradient(ellipse 70% 45% at 50% 105%, rgba(193,102,61,0.30), transparent 70%),
+      linear-gradient(180deg, var(--night-deep) 0%, var(--night) 45%, #1d2b3a 78%, #234249 100%);
+  }
+  .horizon-lights{
+    position:absolute; bottom:14%; left:0; width:100%; height:10%; z-index:1;
+    background-image:
+      radial-gradient(1.5px 1.5px at 8% 40%, rgba(244,236,224,0.7), transparent),
+      radial-gradient(1.5px 1.5px at 15% 60%, rgba(244,236,224,0.5), transparent),
+      radial-gradient(1.5px 1.5px at 24% 30%, rgba(244,236,224,0.6), transparent),
+      radial-gradient(1.5px 1.5px at 33% 55%, rgba(244,236,224,0.4), transparent),
+      radial-gradient(1.5px 1.5px at 44% 45%, rgba(244,236,224,0.7), transparent),
+      radial-gradient(1.5px 1.5px at 55% 65%, rgba(244,236,224,0.5), transparent),
+      radial-gradient(1.5px 1.5px at 66% 35%, rgba(244,236,224,0.6), transparent),
+      radial-gradient(1.5px 1.5px at 77% 50%, rgba(244,236,224,0.4), transparent),
+      radial-gradient(1.5px 1.5px at 88% 40%, rgba(244,236,224,0.65), transparent),
+      radial-gradient(1.5px 1.5px at 95% 58%, rgba(244,236,224,0.5), transparent);
+    opacity:0.9;
+  }
+  .water-shimmer{
+    position:absolute; bottom:0; left:0; width:100%; height:26%; z-index:1;
+    background: linear-gradient(180deg, transparent, rgba(47,143,146,0.35));
+  }
+  .water-shimmer::before{
+    content:''; position:absolute; inset:0;
+    background: repeating-linear-gradient(100deg, rgba(127,194,192,0.10) 0px, rgba(127,194,192,0.10) 2px, transparent 2px, transparent 40px);
+    animation: shimmer 7s linear infinite;
+  }
+  @keyframes shimmer{
+    0%{ transform: translateX(0); }
+    100%{ transform: translateX(80px); }
+  }
+  .hero-content{position:relative; z-index:2; max-width:780px;}
+  .hero h1{
+    font-size: clamp(2.6rem, 6vw, 4.6rem);
+    line-height:1.03;
+    margin: 1rem 0 1.4rem;
+  }
+  .hero p.lead{
+    font-size:1.1rem; max-width:540px; color:rgba(244,236,224,0.82);
+    margin-bottom:2.2rem;
+  }
+  .hero-ctas{display:flex; gap:1rem; flex-wrap:wrap;}
+  .btn-primary{
+    background: var(--terracotta);
+    color: var(--night-deep);
+    font-weight:600;
+    padding:0.9rem 1.7rem;
+    border-radius:2px;
+    font-size:0.95rem;
+    transition: background .2s, transform .2s;
+    display:inline-block;
+  }
+  .btn-primary:hover{ background: var(--terracotta-light); transform: translateY(-2px); }
+  .btn-ghost{
+    border:1px solid var(--line);
+    padding:0.9rem 1.7rem;
+    border-radius:2px;
+    font-size:0.95rem;
+  }
+  .btn-ghost:hover{border-color:var(--sea-light);}
+  .hero-stats{
+    position:relative; z-index:2;
+    display:flex; gap:2.5rem; margin-top:3.5rem;
+    padding-top:1.6rem; border-top:1px solid var(--line);
+    max-width:640px; flex-wrap:wrap;
+  }
+  .hero-stats div{font-family:'JetBrains Mono', monospace; font-size:0.8rem; opacity:0.8;}
+  .hero-stats b{display:block; font-family:'Fraunces', serif; font-size:1.5rem; color:var(--cream); font-weight:500;}
+
+  /* SECTION LABELS */
+  section{padding: 6.5rem 6vw;}
+  .section-head{max-width:640px; margin-bottom:3.2rem;}
+  .section-head h2{font-size:clamp(1.8rem, 3.4vw, 2.6rem); margin-top:0.6rem;}
+  .section-head p{color:rgba(244,236,224,0.7); margin-top:0.9rem; max-width:520px;}
+
+  /* LISTINGS */
+  .listings{background: linear-gradient(180deg, var(--night), #101923);}
+  .grid{
+    display:grid;
+    grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+    gap:1.6rem;
+  }
+  .card{
+    background: rgba(244,236,224,0.03);
+    border:1px solid var(--line);
+    border-radius:4px;
+    overflow:hidden;
+    transition: transform .35s ease, border-color .35s ease;
+    position:relative;
+  }
+  .card:hover{ transform: translateY(-6px); border-color: rgba(127,194,192,0.5); }
+  .card-visual{
+    position:relative; height:190px;
+    background: linear-gradient(180deg, #1d2b3a, #161f2c);
+    overflow:hidden;
+  }
+  .card-visual svg{position:absolute; inset:0; width:100%; height:100%;}
+  .card-visual .pool-shimmer{
+    position:absolute; left:0; right:0; bottom:0; height:38%;
+    background: linear-gradient(180deg, rgba(47,143,146,0.55), rgba(47,143,146,0.15));
+  }
+  .card-visual .pool-shimmer::after{
+    content:''; position:absolute; inset:0;
+    background: repeating-linear-gradient(95deg, rgba(255,255,255,0.06) 0px, rgba(255,255,255,0.06) 1.5px, transparent 1.5px, transparent 22px);
+    animation: shimmer 5.5s linear infinite;
+  }
+  .card-badge{
+    position:absolute; top:0.9rem; left:0.9rem; z-index:3;
+    font-family:'JetBrains Mono', monospace; font-size:0.68rem;
+    letter-spacing:0.08em; text-transform:uppercase;
+    background: rgba(14,20,28,0.75); border:1px solid var(--line);
+    padding:0.3rem 0.6rem; border-radius:2px; color: var(--sea-light);
+  }
+  .card-body{padding:1.4rem 1.4rem 1.6rem;}
+  .card-body h3{font-size:1.25rem; margin-bottom:0.35rem;}
+  .card-meta{
+    display:flex; gap:0.9rem; font-size:0.78rem; color:rgba(244,236,224,0.65);
+    margin-bottom:0.9rem; flex-wrap:wrap;
+  }
+  .card-desc{font-size:0.88rem; color:rgba(244,236,224,0.75); margin-bottom:1.2rem;}
+  .card-footer{
+    display:flex; align-items:center; justify-content:space-between;
+    border-top:1px solid var(--line); padding-top:1rem;
+  }
+  .price{font-family:'JetBrains Mono', monospace; font-size:1rem; color:var(--terracotta-light);}
+  .price span{font-size:0.72rem; color:rgba(244,236,224,0.55); font-family:'Work Sans', sans-serif;}
+  .card-link{
+    font-size:0.82rem; border-bottom:1px solid var(--sea-light); color:var(--sea-light);
+    padding-bottom:2px;
+  }
+  .card.featured{
+    grid-column: 1 / -1;
+    display:grid; grid-template-columns: 1.1fr 1fr;
+  }
+  .card.featured .card-visual{height:100%;}
+  @media (max-width: 760px){
+    .card.featured{ grid-template-columns: 1fr; }
+    .card.featured .card-visual{height:220px;}
+  }
+
+  /* AMENITIES */
+  .amenities{
+    display:grid; grid-template-columns: repeat(auto-fit, minmax(220px,1fr));
+    gap:2.2rem;
+  }
+  .amenity{border-top:1px solid var(--line); padding-top:1.2rem;}
+  .amenity .num{font-family:'JetBrains Mono', monospace; color:var(--sea-light); font-size:0.78rem;}
+  .amenity h3{font-size:1.15rem; margin:0.5rem 0 0.5rem; font-weight:500;}
+  .amenity p{font-size:0.88rem; color:rgba(244,236,224,0.7);}
+
+  /* LOCATION */
+  .location{background: linear-gradient(180deg, #101923, var(--night-deep));}
+  .location-grid{display:grid; grid-template-columns: 1fr 1fr; gap:3rem; align-items:center;}
+  @media (max-width:800px){ .location-grid{grid-template-columns:1fr;} }
+  .location-map{
+    height:280px; border:1px solid var(--line); border-radius:4px;
+    background:
+      radial-gradient(circle at 30% 30%, rgba(47,143,146,0.25), transparent 60%),
+      linear-gradient(160deg, #1d2b3a, #0e141c);
+    position:relative; overflow:hidden;
+  }
+  .location-map::after{
+    content:'MAAMRIYEH · MOUNT LEBANON';
+    position:absolute; bottom:1rem; left:1rem;
+    font-family:'JetBrains Mono', monospace; font-size:0.7rem; letter-spacing:0.1em;
+    color: rgba(244,236,224,0.5);
+  }
+  .location-pin{
+    position:absolute; top:45%; left:48%; width:10px; height:10px; border-radius:50%;
+    background: var(--terracotta-light);
+    box-shadow: 0 0 0 6px rgba(193,102,61,0.2), 0 0 0 14px rgba(193,102,61,0.08);
+  }
+
+  /* CONTACT */
+  .contact{
+    background: var(--night-deep);
+    display:grid; grid-template-columns: 1fr 1fr; gap:3rem;
+  }
+  @media (max-width:800px){ .contact{grid-template-columns:1fr;} }
+  .contact-form{display:flex; flex-direction:column; gap:1rem;}
+  .contact-form input, .contact-form select, .contact-form textarea{
+    background: rgba(244,236,224,0.04);
+    border:1px solid var(--line);
+    color: var(--cream);
+    padding:0.85rem 1rem;
+    border-radius:2px;
+    font-family:'Work Sans', sans-serif;
+    font-size:0.92rem;
+  }
+  .contact-form label{font-size:0.78rem; color:rgba(244,236,224,0.6); margin-bottom:0.3rem; display:block;}
+  .contact-form textarea{resize:vertical; min-height:100px;}
+  .contact-info p{margin-bottom:0.6rem; color:rgba(244,236,224,0.75);}
+  .contact-info .big{font-family:'Fraunces', serif; font-size:1.4rem; margin-bottom:1rem;}
+
+  footer{
+    padding:2.4rem 6vw; border-top:1px solid var(--line);
+    display:flex; justify-content:space-between; align-items:center;
+    font-size:0.8rem; color:rgba(244,236,224,0.55); flex-wrap:wrap; gap:1rem;
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">The View<span>.</span></div>
+  <div class="nav-links">
+    <a href="#chalets">Chalets</a>
+    <a href="#villa">Villa</a>
+    <a href="#amenities">Amenities</a>
+    <a href="#contact">Contact</a>
+  </div>
+  <a href="#contact" class="nav-cta">Check availability</a>
+</nav>
+
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="horizon-lights"></div>
+  <div class="water-shimmer"></div>
+  <div class="hero-content">
+    <div class="eyebrow">Maamriyeh, Mount Lebanon</div>
+    <h1>Four pools,<br>one hillside,<br>one view.</h1>
+    <p class="lead">Perched above Maamriyeh, The View is a small family-run estate of three private chalets and a villa ground floor, each with its own pool and its own line of sight over the hills toward the coast.</p>
+    <div class="hero-ctas">
+      <a href="#chalets" class="btn-primary">See the stays</a>
+      <a href="#contact" class="btn-ghost">Request a quote</a>
+    </div>
+  </div>
+  <div class="hero-stats">
+    <div><b>04</b>independent stays</div>
+    <div><b>04</b>private pools</div>
+    <div><b>22</b>guests across the estate</div>
+  </div>
+</section>
+
+<section class="listings" id="chalets">
+  <div class="section-head">
+    <div class="eyebrow">The stays</div>
+    <h2>Every chalet has its own pool, none of them look alike.</h2>
+    <p>Three independent chalets set around the hillside, each with a private pool and a terrace facing the view.</p>
+  </div>
+
+  <div class="grid">
+
+    <!-- Chalet 1 -->
+    <div class="card">
+      <div class="card-visual">
+        <svg viewBox="0 0 400 190" preserveAspectRatio="xMidYMax slice">
+          <polygon points="60,110 140,50 220,110" fill="#233144"/>
+          <rect x="80" y="105" width="120" height="60" fill="#1d2b3a"/>
+          <rect x="125" y="130" width="30" height="35" fill="#0e141c"/>
+        </svg>
+        <div class="pool-shimmer"></div>
+        <div class="card-badge">Chalet Cedar</div>
+      </div>
+      <div class="card-body">
+        <h3>Chalet Cedar</h3>
+        <div class="card-meta">
+          <span>6 guests</span><span>·</span><span>3 bedrooms</span><span>·</span><span>Private pool 8×4m</span>
+        </div>
+        <p class="card-desc">The most secluded of the three, tucked against the pines. Wood terrace facing east, wood stove, open view down the valley.</p>
+        <div class="card-footer">
+          <div class="price">$180<span> / night</span></div>
+          <a href="#contact" class="card-link">View details →</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Chalet 2 -->
+    <div class="card">
+      <div class="card-visual">
+        <svg viewBox="0 0 400 190" preserveAspectRatio="xMidYMax slice">
+          <polygon points="70,105 140,45 210,105" fill="#233144"/>
+          <rect x="85" y="100" width="110" height="65" fill="#1d2b3a"/>
+          <rect x="95" y="120" width="20" height="20" fill="#2f8f92" opacity="0.6"/>
+        </svg>
+        <div class="pool-shimmer"></div>
+        <div class="card-badge">Chalet Ridge</div>
+      </div>
+      <div class="card-body">
+        <h3>Chalet Ridge</h3>
+        <div class="card-meta">
+          <span>8 guests</span><span>·</span><span>4 bedrooms</span><span>·</span><span>Private pool 10×4m</span>
+        </div>
+        <p class="card-desc">The largest of the three, built for big tables. Open kitchen, mezzanine, and a heated pool through the shoulder seasons.</p>
+        <div class="card-footer">
+          <div class="price">$240<span> / night</span></div>
+          <a href="#contact" class="card-link">View details →</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Chalet 3 -->
+    <div class="card">
+      <div class="card-visual">
+        <svg viewBox="0 0 400 190" preserveAspectRatio="xMidYMax slice">
+          <polygon points="65,108 140,48 215,108" fill="#233144"/>
+          <rect x="82" y="103" width="116" height="62" fill="#1d2b3a"/>
+          <rect x="145" y="125" width="18" height="40" fill="#0e141c"/>
+        </svg>
+        <div class="pool-shimmer"></div>
+        <div class="card-badge">Chalet Horizon</div>
+      </div>
+      <div class="card-body">
+        <h3>Chalet Horizon</h3>
+        <div class="card-meta">
+          <span>5 guests</span><span>·</span><span>2 bedrooms</span><span>·</span><span>Private pool 7×3.5m</span>
+        </div>
+        <p class="card-desc">The closest to the edge of the hill, with the clearest line to the coast at sunset. Cozy, built for a couple or a small family.</p>
+        <div class="card-footer">
+          <div class="price">$160<span> / night</span></div>
+          <a href="#contact" class="card-link">View details →</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Villa ground floor -->
+    <div class="card featured" id="villa">
+      <div class="card-visual">
+        <svg viewBox="0 0 400 260" preserveAspectRatio="xMidYMid slice">
+          <rect x="40" y="90" width="320" height="90" fill="#1d2b3a"/>
+          <rect x="40" y="70" width="320" height="20" fill="#233144"/>
+          <rect x="70" y="110" width="40" height="40" fill="#0e141c"/>
+          <rect x="130" y="110" width="40" height="40" fill="#0e141c"/>
+          <rect x="190" y="110" width="40" height="40" fill="#0e141c"/>
+        </svg>
+        <div class="pool-shimmer" style="height:45%;"></div>
+        <div class="card-badge">Villa · Ground floor</div>
+      </div>
+      <div class="card-body">
+        <h3>The View Villa — Ground Floor</h3>
+        <div class="card-meta">
+          <span>10 guests</span><span>·</span><span>4 bedrooms</span><span>·</span><span>Large shared pool 14×6m</span>
+        </div>
+        <p class="card-desc">The independent ground floor of the main villa, with direct access to the largest pool on the estate, a pool house, and a covered terrace looking out over Maamriyeh. Ideal for a wedding weekend or several families booking together.</p>
+        <div class="card-footer">
+          <div class="price">$320<span> / night</span></div>
+          <a href="#contact" class="card-link">View details →</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section id="amenities">
+  <div class="section-head">
+    <div class="eyebrow">Estate amenities</div>
+    <h2>What every stay shares.</h2>
+  </div>
+  <div class="amenities">
+    <div class="amenity">
+      <div class="num">01</div>
+      <h3>Private pool per stay</h3>
+      <p>Each chalet and the villa's ground floor has its own pool, never shared with other guests on the estate.</p>
+    </div>
+    <div class="amenity">
+      <div class="num">02</div>
+      <h3>Independent access & parking</h3>
+      <p>Every stay has its own entrance and parking, so each group keeps its privacy.</p>
+    </div>
+    <div class="amenity">
+      <div class="num">03</div>
+      <h3>End-of-stay housekeeping</h3>
+      <p>Linens and a full clean at checkout are included in every rate.</p>
+    </div>
+    <div class="amenity">
+      <div class="num">04</div>
+      <h3>Book the whole estate</h3>
+      <p>All four stays can be booked together for a wedding, a retreat, or a large family reunion.</p>
+    </div>
+  </div>
+</section>
+
+<section class="location">
+  <div class="location-grid">
+    <div>
+      <div class="eyebrow">Where we are</div>
+      <h2 style="margin-top:0.6rem; font-size:clamp(1.8rem, 3.4vw, 2.6rem);">Maamriyeh, Mount Lebanon.</h2>
+      <p style="color:rgba(244,236,224,0.7); margin-top:0.9rem; max-width:460px;">Set on the hillside above the village, roughly 40 minutes from Beirut. Close enough for a weekend, high enough to catch the coast on a clear evening.</p>
+    </div>
+    <div class="location-map">
+      <div class="location-pin"></div>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="contact-info">
+    <div class="eyebrow">Booking</div>
+    <h2 class="big">A question, a date, a quote?</h2>
+    <p>Send us a message with the stay you have in mind (Chalet Cedar, Ridge, Horizon, or the Villa) and your dates. We reply within 48 hours.</p>
+    <p style="margin-top:1.6rem;" class="mono">stay@theview-maamriyeh.com</p>
+    <p class="mono">+961 00 000 000</p>
+  </div>
+  <form class="contact-form" onsubmit="event.preventDefault();">
+    <div>
+      <label>Stay you're interested in</label>
+      <select>
+        <option>Chalet Cedar</option>
+        <option>Chalet Ridge</option>
+        <option>Chalet Horizon</option>
+        <option>Villa — Ground floor</option>
+        <option>Whole estate</option>
+      </select>
+    </div>
+    <div>
+      <label>Name</label>
+      <input type="text" placeholder="Your name">
+    </div>
+    <div>
+      <label>Email</label>
+      <input type="email" placeholder="you@example.com">
+    </div>
+    <div>
+      <label>Message</label>
+      <textarea placeholder="Dates you have in mind, number of guests..."></textarea>
+    </div>
+    <button type="submit" class="btn-primary" style="align-self:flex-start; border:none; cursor:pointer;">Send request</button>
+  </form>
+</section>
+
+<footer>
+  <div>© 2026 The View — Maamriyeh</div>
+  <div>Example site — swap in your real photos, rates, and contact details</div>
+</footer>
+
+</body>
+</html>
