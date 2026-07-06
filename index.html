@@ -80,11 +80,14 @@
     overflow:hidden;
   }
   .hero-bg{
-    position:absolute; inset:0; z-index:0;
-    background:
-      radial-gradient(ellipse 70% 45% at 50% 105%, rgba(193,102,61,0.30), transparent 70%),
-      linear-gradient(180deg, var(--night-deep) 0%, var(--night) 45%, #1d2b3a 78%, #234249 100%);
-  }
+  position:absolute; inset:0; z-index:0;
+  background:
+    radial-gradient(ellipse 70% 45% at 50% 105%, rgba(193,102,61,0.30), transparent 70%),
+    linear-gradient(180deg, rgba(14,20,28,0.75) 0%, rgba(22,31,44,0.55) 45%, rgba(29,43,58,0.4) 78%, rgba(35,66,73,0.35) 100%),
+    url('images/view.jpeg');
+  background-size: cover;
+  background-position: center;
+}
   .horizon-lights{
     position:absolute; bottom:14%; left:0; width:100%; height:10%; z-index:1;
     background-image:
@@ -286,7 +289,7 @@
 <body>
 
 <nav>
-  <div class="logo">The View<span>.</span></div>
+  <div class="logo">The View</div>
   <div class="nav-links">
     <a href="#chalets">Chalets</a>
     <a href="#villa">Villa</a>
@@ -304,15 +307,16 @@
     <div class="eyebrow">Maamriyeh, Mount Lebanon</div>
     <h1>Four pools,<br>one hillside,<br>one view.</h1>
     <p class="lead">Perched above Maamriyeh, The View is a small family-run estate of three private chalets and a villa ground floor, each with its own pool and its own line of sight over the hills toward the coast.</p>
+    <p class="lead">STILL UNDER CONSTRUCTION.</p>
     <div class="hero-ctas">
       <a href="#chalets" class="btn-primary">See the stays</a>
       <a href="#contact" class="btn-ghost">Request a quote</a>
     </div>
   </div>
   <div class="hero-stats">
-    <div><b>04</b>independent stays</div>
-    <div><b>04</b>private pools</div>
-    <div><b>22</b>guests across the estate</div>
+    <div><b>4</b>independent stays</div>
+    <div><b>4</b>private pools</div>
+    <div><b>20+</b>guests across the estate</div>
   </div>
 </section>
 
@@ -326,20 +330,16 @@
   <div class="grid">
 
     <!-- Chalet 1 -->
-    <div class="card">
-      <div class="card-visual">
-        <svg viewBox="0 0 400 190" preserveAspectRatio="xMidYMax slice">
-          <polygon points="60,110 140,50 220,110" fill="#233144"/>
-          <rect x="80" y="105" width="120" height="60" fill="#1d2b3a"/>
-          <rect x="125" y="130" width="30" height="35" fill="#0e141c"/>
-        </svg>
-        <div class="pool-shimmer"></div>
-        <div class="card-badge">Chalet Cedar</div>
-      </div>
+<div class="card">
+  <div class="card-visual" style="height:380px;">
+    <img src="images/chalet1.jpeg" alt="Chalet Cedar" style="width:100%; height:100%; object-fit:cover;">
+    <div class="card-badge">Chalet Cedar</div>
+  </div>
+
       <div class="card-body">
         <h3>Chalet Cedar</h3>
         <div class="card-meta">
-          <span>6 guests</span><span>·</span><span>3 bedrooms</span><span>·</span><span>Private pool 8×4m</span>
+          <span>3 guests</span><span>·</span><span>1 bedroom</span><span>·</span><span>Private pool 8×4m</span>
         </div>
         <p class="card-desc">The most secluded of the three, tucked against the pines. Wood terrace facing east, wood stove, open view down the valley.</p>
         <div class="card-footer">
