@@ -284,6 +284,49 @@
     display:flex; justify-content:space-between; align-items:center;
     font-size:0.8rem; color:rgba(244,236,224,0.55); flex-wrap:wrap; gap:1rem;
   }
+
+  .contact-form select option{
+  background: var(--night-deep);
+  color: var(--cream);
+}
+
+/* GALLERY / CAROUSEL */
+.card-gallery{
+  position:relative; height:220px; overflow:hidden;
+  background: linear-gradient(180deg, #1d2b3a, #161f2c);
+}
+.gallery-track{
+  display:flex; height:100%;
+  transition: transform .4s ease;
+}
+.gallery-track img{
+  width:100%; height:100%; object-fit:cover; flex-shrink:0;
+}
+.gallery-arrow{
+  position:absolute; top:50%; transform:translateY(-50%);
+  background: rgba(14,20,28,0.55);
+  border:1px solid var(--line);
+  color: var(--cream);
+  width:34px; height:34px; border-radius:50%;
+  display:flex; align-items:center; justify-content:center;
+  cursor:pointer; z-index:4; font-size:1.2rem;
+  opacity:0; transition: opacity .2s, background .2s;
+}
+.card-gallery:hover .gallery-arrow{ opacity:1; }
+.gallery-arrow:hover{ background: rgba(14,20,28,0.85); }
+.gallery-arrow.prev{ left:0.6rem; }
+.gallery-arrow.next{ right:0.6rem; }
+.gallery-dots{
+  position:absolute; bottom:0.7rem; left:50%; transform:translateX(-50%);
+  display:flex; gap:0.4rem; z-index:4;
+}
+.gallery-dots span{
+  width:6px; height:6px; border-radius:50%;
+  background: rgba(244,236,224,0.4);
+  cursor:pointer; transition: background .2s, transform .2s;
+}
+.gallery-dots span.active{ background: var(--cream); transform: scale(1.2); }
+
 </style>
 </head>
 <body>
@@ -306,7 +349,7 @@
   <div class="hero-content">
     <div class="eyebrow">Maamriyeh, Mount Lebanon</div>
     <h1>Four pools,<br>one hillside,<br>one view.</h1>
-    <p class="lead">Perched above Maamriyeh, The View is a small family-run estate of three private chalets and a villa ground floor, each with its own pool and its own line of sight over the hills toward the coast.</p>
+    <p class="lead">Perched above Maamriyeh, The View is a small family-run estate of six pools across six stays: four chalets — one with an indoor jacuzzi, three with an outdoor pool — plus a villa split into a ground-floor unit with a large terrace and pool, and an upstairs apartment with its own backyard and a small pool.</p>
     <p class="lead">STILL UNDER CONSTRUCTION.</p>
     <div class="hero-ctas">
       <a href="#chalets" class="btn-primary">See the stays</a>
@@ -314,34 +357,39 @@
     </div>
   </div>
   <div class="hero-stats">
-    <div><b>4</b>independent stays</div>
-    <div><b>4</b>private pools</div>
-    <div><b>20+</b>guests across the estate</div>
-  </div>
+  <div><b>6</b>independent stays</div>
+  <div><b>6</b>pools across the estate</div>
+</div>
 </section>
 
 <section class="listings" id="chalets">
   <div class="section-head">
     <div class="eyebrow">The stays</div>
-    <h2>Every chalet has its own pool, none of them look alike.</h2>
-    <p>Three independent chalets set around the hillside, each with a private pool and a terrace facing the view.</p>
+    <h2>Six stays, six pools, one hillside.</h2>
+    <p>Four chalets and a two-level villa, each with its own pool or jacuzzi — swipe through the photos on each stay below.</p>
   </div>
 
-  <div class="grid">
+    <div class="grid">
 
-    <!-- Chalet 1 -->
-<div class="card">
-  <div class="card-visual" style="height:380px;">
-    <img src="images/chalet1.jpeg" alt="Chalet Cedar" style="width:100%; height:100%; object-fit:cover;">
-    <div class="card-badge">Chalet Cedar</div>
-  </div>
-
+    <!-- Chalet Cedar -->
+    <div class="card">
+      <div class="card-gallery">
+        <div class="gallery-track">
+          <img src="images/chalet-cedar-1.jpeg" alt="Chalet Cedar">
+          <img src="images/chalet-cedar-2.jpeg" alt="Chalet Cedar">
+          <img src="images/chalet-cedar-3.jpeg" alt="Chalet Cedar">
+        </div>
+        <button class="gallery-arrow prev">‹</button>
+        <button class="gallery-arrow next">›</button>
+        <div class="gallery-dots"></div>
+        <div class="card-badge">Chalet Cedar</div>
+      </div>
       <div class="card-body">
         <h3>Chalet Cedar</h3>
         <div class="card-meta">
-          <span>3 guests</span><span>·</span><span>1 bedroom</span><span>·</span><span>Private pool 8×4m</span>
+          <span>6 guests</span><span>·</span><span>3 bedrooms</span><span>·</span><span>Private outdoor pool 8×4m</span>
         </div>
-        <p class="card-desc">The most secluded of the three, tucked against the pines. Wood terrace facing east, wood stove, open view down the valley.</p>
+        <p class="card-desc">The most secluded of the four, tucked against the pines with an open view down the valley.</p>
         <div class="card-footer">
           <div class="price">$180<span> / night</span></div>
           <a href="#contact" class="card-link">View details →</a>
@@ -349,23 +397,24 @@
       </div>
     </div>
 
-    <!-- Chalet 2 -->
+
+      <!-- Chalet Ridge -->
     <div class="card">
-      <div class="card-visual">
-        <svg viewBox="0 0 400 190" preserveAspectRatio="xMidYMax slice">
-          <polygon points="70,105 140,45 210,105" fill="#233144"/>
-          <rect x="85" y="100" width="110" height="65" fill="#1d2b3a"/>
-          <rect x="95" y="120" width="20" height="20" fill="#2f8f92" opacity="0.6"/>
-        </svg>
-        <div class="pool-shimmer"></div>
+      <div class="card-gallery">
+        <div class="gallery-track">
+          <img src="images/chalet-ridge-1.jpeg" alt="Chalet Ridge">
+        </div>
+        <button class="gallery-arrow prev">‹</button>
+        <button class="gallery-arrow next">›</button>
+        <div class="gallery-dots"></div>
         <div class="card-badge">Chalet Ridge</div>
       </div>
       <div class="card-body">
         <h3>Chalet Ridge</h3>
         <div class="card-meta">
-          <span>8 guests</span><span>·</span><span>4 bedrooms</span><span>·</span><span>Private pool 10×4m</span>
+          <span>8 guests</span><span>·</span><span>4 bedrooms</span><span>·</span><span>Private outdoor pool 10×4m</span>
         </div>
-        <p class="card-desc">The largest of the three, built for big tables. Open kitchen, mezzanine, and a heated pool through the shoulder seasons.</p>
+        <p class="card-desc">The largest of the four, built for big tables, with a heated pool through the shoulder seasons.</p>
         <div class="card-footer">
           <div class="price">$240<span> / night</span></div>
           <a href="#contact" class="card-link">View details →</a>
@@ -373,23 +422,25 @@
       </div>
     </div>
 
-    <!-- Chalet 3 -->
+     <!-- Chalet Horizon -->
     <div class="card">
-      <div class="card-visual">
-        <svg viewBox="0 0 400 190" preserveAspectRatio="xMidYMax slice">
-          <polygon points="65,108 140,48 215,108" fill="#233144"/>
-          <rect x="82" y="103" width="116" height="62" fill="#1d2b3a"/>
-          <rect x="145" y="125" width="18" height="40" fill="#0e141c"/>
-        </svg>
-        <div class="pool-shimmer"></div>
+      <div class="card-gallery">
+        <div class="gallery-track">
+          <img src="images/chalet-horizon-1.jpeg" alt="Chalet Horizon">
+          <img src="images/chalet-horizon-2.jpeg" alt="Chalet Horizon">
+          <img src="images/chalet-horizon-3.jpeg" alt="Chalet Horizon">
+        </div>
+        <button class="gallery-arrow prev">‹</button>
+        <button class="gallery-arrow next">›</button>
+        <div class="gallery-dots"></div>
         <div class="card-badge">Chalet Horizon</div>
       </div>
       <div class="card-body">
         <h3>Chalet Horizon</h3>
         <div class="card-meta">
-          <span>5 guests</span><span>·</span><span>2 bedrooms</span><span>·</span><span>Private pool 7×3.5m</span>
+          <span>5 guests</span><span>·</span><span>2 bedrooms</span><span>·</span><span>Private outdoor pool 7×3.5m</span>
         </div>
-        <p class="card-desc">The closest to the edge of the hill, with the clearest line to the coast at sunset. Cozy, built for a couple or a small family.</p>
+        <p class="card-desc">The closest to the edge of the hill, with the clearest line to the coast at sunset.</p>
         <div class="card-footer">
           <div class="price">$160<span> / night</span></div>
           <a href="#contact" class="card-link">View details →</a>
@@ -397,27 +448,55 @@
       </div>
     </div>
 
-    <!-- Villa ground floor -->
-    <div class="card featured" id="villa">
-      <div class="card-visual">
-        <svg viewBox="0 0 400 260" preserveAspectRatio="xMidYMid slice">
-          <rect x="40" y="90" width="320" height="90" fill="#1d2b3a"/>
-          <rect x="40" y="70" width="320" height="20" fill="#233144"/>
-          <rect x="70" y="110" width="40" height="40" fill="#0e141c"/>
-          <rect x="130" y="110" width="40" height="40" fill="#0e141c"/>
-          <rect x="190" y="110" width="40" height="40" fill="#0e141c"/>
-        </svg>
-        <div class="pool-shimmer" style="height:45%;"></div>
+
+   <!-- Villa ground floor -->
+    <div class="card" id="villa">
+      <div class="card-gallery">
+        <div class="gallery-track">
+          <img src="images/villa-ground-1.jpeg" alt="The View Villa — Ground Floor">
+          <img src="images/villa-ground-2.jpeg" alt="The View Villa — Ground Floor">
+          <img src="images/villa-ground-3.jpeg" alt="The View Villa — Ground Floor">
+        </div>
+        <button class="gallery-arrow prev">‹</button>
+        <button class="gallery-arrow next">›</button>
+        <div class="gallery-dots"></div>
         <div class="card-badge">Villa · Ground floor</div>
       </div>
       <div class="card-body">
         <h3>The View Villa — Ground Floor</h3>
         <div class="card-meta">
-          <span>10 guests</span><span>·</span><span>4 bedrooms</span><span>·</span><span>Large shared pool 14×6m</span>
+          <span>10 guests</span><span>·</span><span>4 bedrooms</span><span>·</span><span>Large terrace + pool 14×6m</span>
         </div>
-        <p class="card-desc">The independent ground floor of the main villa, with direct access to the largest pool on the estate, a pool house, and a covered terrace looking out over Maamriyeh. Ideal for a wedding weekend or several families booking together.</p>
+        <p class="card-desc">The independent ground floor of the main villa, with a large covered terrace and the biggest pool on the estate.</p>
         <div class="card-footer">
           <div class="price">$320<span> / night</span></div>
+          <a href="#contact" class="card-link">View details →</a>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- Villa upstairs apartment -->
+    <div class="card">
+      <div class="card-gallery">
+        <div class="gallery-track">
+          <img src="images/villa-upstairs-1.jpeg" alt="The View Villa — Upstairs Apartment">
+          <img src="images/villa-upstairs-2.jpeg" alt="The View Villa — Upstairs Apartment">
+          <img src="images/villa-upstairs-3.jpeg" alt="The View Villa — Upstairs Apartment">
+        </div>
+        <button class="gallery-arrow prev">‹</button>
+        <button class="gallery-arrow next">›</button>
+        <div class="gallery-dots"></div>
+        <div class="card-badge">Villa · Upstairs</div>
+      </div>
+      <div class="card-body">
+        <h3>The View Villa — Upstairs Apartment</h3>
+        <div class="card-meta">
+          <span>4 guests</span><span>·</span><span>2 bedrooms</span><span>·</span><span>Private backyard + small pool</span>
+        </div>
+        <p class="card-desc">A self-contained apartment above the villa, with its own backyard and a small private pool.</p>
+        <div class="card-footer">
+          <div class="price">$210<span> / night</span></div>
           <a href="#contact" class="card-link">View details →</a>
         </div>
       </div>
@@ -426,7 +505,12 @@
   </div>
 </section>
 
-<section id="amenities">
+<section id="amenities" style="
+  position:relative;
+  background-image: linear-gradient(180deg, rgba(22,31,44,0.6) 0%, rgba(22,31,44,0.75) 100%), url('images/amenities-bg.jpeg');
+  background-size: cover;
+  background-position: center;
+">
   <div class="section-head">
     <div class="eyebrow">Estate amenities</div>
     <h2>What every stay shares.</h2>
@@ -462,10 +546,17 @@
       <h2 style="margin-top:0.6rem; font-size:clamp(1.8rem, 3.4vw, 2.6rem);">Maamriyeh, Mount Lebanon.</h2>
       <p style="color:rgba(244,236,224,0.7); margin-top:0.9rem; max-width:460px;">Set on the hillside above the village, roughly 40 minutes from Beirut. Close enough for a weekend, high enough to catch the coast on a clear evening.</p>
     </div>
-    <div class="location-map">
-      <div class="location-pin"></div>
-    </div>
+  <div class="location-map">
+<iframe
+  src="https://www.google.com/maps?q=33.494197,35.3651599&output=embed"
+  width="100%"
+  height="100%"
+  style="border:0; filter: grayscale(20%) contrast(1.1);"
+  loading="lazy"
+  referrerpolicy="no-referrer-when-downgrade">
+</iframe>
   </div>
+
 </section>
 
 <section class="contact" id="contact">
@@ -474,7 +565,7 @@
     <h2 class="big">A question, a date, a quote?</h2>
     <p>Send us a message with the stay you have in mind (Chalet Cedar, Ridge, Horizon, or the Villa) and your dates. We reply within 48 hours.</p>
     <p style="margin-top:1.6rem;" class="mono">stay@theview-maamriyeh.com</p>
-    <p class="mono">+961 00 000 000</p>
+    <p class="mono">+961 76 039 879</p>
   </div>
   <form class="contact-form" onsubmit="event.preventDefault();">
     <div>
@@ -507,6 +598,44 @@
   <div>© 2026 The View — Maamriyeh</div>
   <div>Example site — swap in your real photos, rates, and contact details</div>
 </footer>
+
+<script>
+document.querySelectorAll('.card-gallery').forEach(gallery => {
+  const track = gallery.querySelector('.gallery-track');
+  const images = track.querySelectorAll('img');
+  const dotsWrap = gallery.querySelector('.gallery-dots');
+  const prevBtn = gallery.querySelector('.gallery-arrow.prev');
+  const nextBtn = gallery.querySelector('.gallery-arrow.next');
+  let index = 0;
+
+  images.forEach((_, i) => {
+    const dot = document.createElement('span');
+    if (i === 0) dot.classList.add('active');
+    dot.addEventListener('click', () => goTo(i));
+    dotsWrap.appendChild(dot);
+  });
+  const dots = dotsWrap.querySelectorAll('span');
+
+  function goTo(i){
+    index = (i + images.length) % images.length;
+    track.style.transform = `translateX(-${index * 100}%)`;
+    dots.forEach(d => d.classList.remove('active'));
+    dots[index].classList.add('active');
+  }
+
+  prevBtn.addEventListener('click', () => goTo(index - 1));
+  nextBtn.addEventListener('click', () => goTo(index + 1));
+
+  // swipe support
+  let startX = 0;
+  gallery.addEventListener('touchstart', e => { startX = e.touches[0].clientX; });
+  gallery.addEventListener('touchend', e => {
+    const diff = e.changedTouches[0].clientX - startX;
+    if (diff > 40) goTo(index - 1);
+    else if (diff < -40) goTo(index + 1);
+  });
+});
+</script>
 
 </body>
 </html>
